@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { validatePartialNote, validateNote } from "./schemas/lista.mjs";
-import PORT from "/config.js"
+import { PORT } from "/config.js"
 
 const app = express()
 
