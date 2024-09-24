@@ -5,13 +5,7 @@ import { PORT } from "./config.mjs";
 const app = express()
 
 //MIDDLEWARES
-const corsOptions = {
-   origin: 'http://127.0.0.1:3000', // Cambia el puerto según el de tu frontend
-   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-   allowedHeaders: ['Content-Type', 'Authorization'],
-};
-app.use(cors(corsOptions));
-
+app.use(cors())
 app.use(express.json())
 app.use((req, res, next) => {
    console.log(req.method)
