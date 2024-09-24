@@ -9,11 +9,15 @@ app.use(cors())
 
 app.use(express.json())
 app.use((req, res, next) => {
+   res.set('Referrer-Policy', 'no-referrer-when-downgrade');
+   next();
+});
+app.use((req, res, next) => {
    console.log(req.method)
    console.log(req.path)
    console.log(req.body)
    console.log(req.query)
-   res.set('Referrer-Policy', 'no-referrer-when-downgrade');
+
    console.log("-----------")
    next()
 })
