@@ -13,7 +13,7 @@ app.use((req, res, next) => {
    console.log(req.path)
    console.log(req.body)
    console.log(req.query)
-
+   res.set('Referrer-Policy', 'no-referrer-when-downgrade');
    console.log("-----------")
    next()
 })
