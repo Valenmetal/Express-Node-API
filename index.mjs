@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { validatePartialNote, validateNote } from "./schemas/lista.mjs";
+import PORT from "/config.js"
 
 const app = express()
 
@@ -45,7 +46,7 @@ let lista = [
 ]
 
 const hostname = "127.0.0.1"
-const port = 3001
+
 
 //GETs
 app.get("/", (req, res) => {
@@ -144,6 +145,6 @@ app.use((req, res) => {
    })
 })
 
-app.listen(port, hostname, () => {
-   console.log(`Server running at http://${hostname}:${port}/`)
+app.listen(PORT, hostname, () => {
+   console.log(`Server running at http://${hostname}:${PORT}/`)
 })
