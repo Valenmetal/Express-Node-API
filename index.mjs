@@ -44,7 +44,7 @@ let lista = [
    },
 ]
 
-const hostname = "127.0.0.1"
+const hostname = "0.0.0.0"
 
 
 //GETs
