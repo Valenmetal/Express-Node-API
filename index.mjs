@@ -1,18 +1,11 @@
 import express from "express"
-import cors from "cors"
+// import cors from "cors"
 import { validatePartialNote, validateNote } from "./schemas/lista.mjs";
 import { PORT } from "./config.mjs";
 const app = express()
 
 //MIDDLEWARES
-const corsOptions = {
-   origin: 'http://127.0.0.1:3000', // Cambia el puerto según el de tu frontend
-   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-   allowedHeaders: ['Content-Type', 'Authorization'],
-};
-
-// Habilitar CORS con opciones específicas
-app.use(cors(corsOptions));
+// app.use(cors())
 
 app.use(express.json())
 app.use((req, res, next) => {
