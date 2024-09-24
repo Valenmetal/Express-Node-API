@@ -1,11 +1,11 @@
 import express from "express"
-// import cors from "cors"
+import cors from "cors"
 import { validatePartialNote, validateNote } from "./schemas/lista.mjs";
 import { PORT } from "./config.mjs";
 const app = express()
 
 //MIDDLEWARES
-// app.use(cors())
+app.use(cors())
 
 app.use(express.json())
 app.use((req, res, next) => {
