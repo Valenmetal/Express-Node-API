@@ -5,7 +5,12 @@ import { PORT } from "./config.mjs";
 const app = express()
 
 //MIDDLEWARES
-// app.use(cors())
+app.use(cors())
+app.use(cors({
+   origin: 'http://127.0.0.1',  // Permite un dominio específico
+   methods: ['GET', 'POST'],        // Permite solo estos métodos
+   allowedHeaders: ['Content-Type']  // Permite solo estos headers
+}));
 app.use(express.json())
 app.use((req, res, next) => {
    console.log(req.method)
