@@ -5,7 +5,7 @@ const listaSchema = z.object({
         invalid_type_error: 'Note must be a string',
         required_error: 'Note name is required.'
     }),
-    type: z.boolean(),
+    important: z.boolean(),
 
 })
 

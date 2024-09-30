@@ -22,19 +22,19 @@ let lista = [
       id: 1,
       name: "Redisegned notifications",
       date: "Aug 10, 2024",
-      type: false,
+      important: false,
    },
    {
       id: 2,
       name: "Bugs",
       date: "Jul 23, 2024",
-      type: false,
+      important: true,
    },
    {
       id: 3,
       name: "Redisegned Logo",
       date: "Jul 15, 2024",
-      type: false,
+      important: false,
    },
 ]
 
@@ -46,11 +46,11 @@ app.get("/", (req, res) => {
    res.send("<h1>Home</h1>")
 })
 app.get("/api/notes", (req, res) => {
-   // If: "/api/notes?type=Not Important" we extract the type with req.query and filter, if not return all list
-   const { type } = req.query
-   if (type) {
+   // If: "/api/notes?important=Not Important" we extract the important with req.query and filter, if not return all list
+   const { important } = req.query
+   if (important) {
       const filteredNotes = lista.filter(
-         nota => nota.type.toLowerCase() === type.toLowerCase()
+         nota => nota.important === important
       )
       console.log(filteredNotes)
       return res.json(filteredNotes)
@@ -99,7 +99,7 @@ app.post("/api/notes", (req, res) => {
          month: "short",
          day: "numeric",
       }),
-      type: false
+      important: false
    }
    lista = [...lista, newItem]
    res.json(newItem)
