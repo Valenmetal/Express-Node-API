@@ -5,11 +5,7 @@ const listaSchema = z.object({
         invalid_type_error: 'Note must be a string',
         required_error: 'Note name is required.'
     }),
-    type: z.enum(["Not Important", "Important"], {
-        errorMap: (issue, ctx) => {
-            return { message: "Type must be either 'Not Important' or 'Important'." };
-        },
-    }),
+    type: z.boolean(),
 
 })
 

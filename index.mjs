@@ -22,19 +22,19 @@ let lista = [
       id: 1,
       name: "Redisegned notifications",
       date: "Aug 10, 2024",
-      type: "Not Important",
+      type: false,
    },
    {
       id: 2,
       name: "Bugs",
       date: "Jul 23, 2024",
-      type: "Important",
+      type: false,
    },
    {
       id: 3,
       name: "Redisegned Logo",
       date: "Jul 15, 2024",
-      type: "Not Important",
+      type: false,
    },
 ]
 
@@ -99,7 +99,7 @@ app.post("/api/notes", (req, res) => {
          month: "short",
          day: "numeric",
       }),
-      type: "Not Important"
+      type: false
    }
    lista = [...lista, newItem]
    res.json(newItem)
