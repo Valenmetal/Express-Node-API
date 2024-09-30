@@ -23,24 +23,18 @@ let lista = [
       name: "Redisegned notifications",
       date: "Aug 10, 2024",
       type: "Not Important",
-      description:
-         "Customizing your notification settings is now easier than ever. Quickly change your settings using presets like Focused or Mentions only, or tailor them to fit your needs.",
    },
    {
       id: 2,
       name: "Bugs",
       date: "Jul 23, 2024",
       type: "Important",
-      description:
-         "In our continuous effort to make Hirefy the most reliable recruiting platform, we eliminate bugs in the platform! 🚫 Here's a summary of some of the major fixes:",
    },
    {
       id: 3,
       name: "Redisegned Logo",
       date: "Jul 15, 2024",
       type: "Not Important",
-      description:
-         "CWith the revamped Time Tracking interface, you get a streamlined design for easier, efficient time tracking. Track time directly from the menu bar and have admins record time for other users, ensuring total time-tracking control.",
    },
 ]
 
@@ -99,14 +93,13 @@ app.post("/api/notes", (req, res) => {
 
    let newItem = {
       id: maxId > 0 ? maxId + 1 : 1,
+      ...result.data,
       date: new Date().toLocaleDateString("en-US", {
          year: "numeric",
          month: "short",
          day: "numeric",
       }),
-      description: item.description,
-      type: "Not Important",
-      ...result.data
+      type: "Not Important"
    }
    lista = [...lista, newItem]
    res.json(newItem)
