@@ -21,36 +21,33 @@ let lista = [
    {
       id: 1,
       name: "Redisegned notifications",
-      date: "Aug 10, 2024",
+      date: "Jan 5, 2025",
       important: false,
    },
    {
       id: 2,
       name: "Bugs",
-      date: "Jul 23, 2024",
+      date: "Feb 3, 2025",
       important: true,
    },
    {
       id: 3,
       name: "Redisegned Logo",
-      date: "Jul 15, 2024",
+      date: "Mar 3, 2025",
       important: false,
    },
 ]
-
-const hostname = "0.0.0.0"
-
 
 //GETs
 app.get("/", (req, res) => {
    res.send("<h1>Home</h1>")
 })
 app.get("/api/notes", (req, res) => {
-   // If: "/api/notes?important=Not Important" we extract the important with req.query and filter, if not return all list
+   // If: "/api/notes?important=true" we extract the important with req.query and filter, if not return all list
    const { important } = req.query
    if (important) {
       const filteredNotes = lista.filter(
-         nota => nota.important === important
+         nota => nota.important === (important === "true")
       )
       console.log(filteredNotes)
       return res.json(filteredNotes)
@@ -85,9 +82,6 @@ app.post("/api/notes", (req, res) => {
       // 422 Unprocessable Entity
       return res.status(400).json({ error: JSON.parse(result.error.message) })
    }
-
-   let item = req.body
-
    let ids = lista.map(note => note.id)
    let maxId = Math.max(...ids)
 
@@ -136,7 +130,7 @@ app.use((req, res) => {
       error: "Not Found"
    })
 })
-
+const hostname = "127.0.0.1"
 app.listen(PORT, hostname, () => {
    console.log(`Server running at http://${hostname}:${PORT}/`)
 })
