@@ -6,4 +6,4 @@ GET http://localhost:3001/api/notes/2
 ###
 GET http://localhost:3001/api/notes/3
 ###
-GET http://localhost:3001/api/notes?type=Not Important
+GET http://localhost:3001/api/notes?important=true
